@@ -7,11 +7,17 @@ use Illuminate\Support\Facades\Config; //importar para usar os metodos da Facade
 
 
 Route::get('/', function () {
-    $environment = App::environment(); // carrega a configuracao do ambiente test ou production
-   // $timezone = Config::get('app.timezone'); // Revelando o fuso horário da aplicação
-    //$locale = Config::get('app.locale'); // Descobrindo a localidade da aplicação
-    //$locale1 = config('app.locale'); // Descobrindo a localidade da aplicação
+    // $environment = App::environment(); // carrega a configuracao do ambiente test ou production
+    // $timezone = Config::get('app.timezone'); // Revelando o fuso horário da aplicação
+    // $locale = Config::get('app.locale'); // Descobrindo a localidade da aplicação
+    // $locale1 = config('app.locale'); // Descobrindo a localidade da aplicação
+    //Config::set('app.debug', true); // Ativando o modo de depuração da aplicação
+   // config(['app.url' => 'https://meuexemplo.com']); // Definindo a URL da aplicação
+    //return view('welcome',compact('environment'));
 
-    //dd( $locale1);
-    return view('welcome',compact('environment'));
+    $timezone = Config::string('app.timezone'); // Obtendo o fuso horário como string
+    
+    $age = Config::integer('user.age'); // Acessando a idade do usuário como inteiro
+
+    dd($age);
 });
